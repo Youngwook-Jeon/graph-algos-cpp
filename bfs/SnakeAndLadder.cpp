@@ -12,17 +12,14 @@ class Graph {
 public:
     Graph(int v) {
         V = v;
-        l = new list<int>[V];
+        l = new list<int>[V + 1];
     }
 
-    void addEdge(int i, int j, bool undir = true) {
+    void addEdge(int i, int j) {
         l[i].push_back(j);
-        if (undir) {
-            l[j].push_back(i);
-        }
     }
 
-    void minCostBFS(int source, int dest) {
+    int minCostBFS(int source, int dest) {
         queue<int> q;
         bool *visited = new bool[V]{0};
         int *dist = new int[V]{0};
